@@ -90,12 +90,15 @@ agregar.addEventListener("click", (event)=>{
     document.getElementById("alertavalidaciones").style.display="none";
     contador++;
     document.getElementById("contadorproductos").innerHTML=contador;
+    localStorage.setItem("contadorproductos", contador);
     let precio= (Math.floor((Math.random() * 50)*100))/100;
     let cantidad = parseFloat(txtNumber.value);
     totalenproductos += (cantidad<1)?Math.ceil(cantidad):parseInt(cantidad);
     document.getElementById("poductostotal").innerHTML = totalenproductos;
+    localStorage.setItem("totalproductos", totalenproductos);
     costototal += (precio*cantidad);
     preciototal.innerHTML = `$ ${costototal.toFixed(2)}`
+    localStorage.setItem("costototal", costototal.toFixed(2));
     let tmp = `<tr>
     <th scope="row">${contador}</th>
     <td>${txtNombre.value}</td>
@@ -118,6 +121,24 @@ txtNombre.addEventListener("blur",(event) =>{
 txtNumber.addEventListener("blur",(event) =>{
     event.target.value = event.target.value.trim();
 });
+
+window,addEventListener("load",function(){
+    if (localStorage.getItem("contadorproductos"!=null)) {
+        contador=parseInt(localStorage.getItem("contadorproductos"));
+        document.getElementById("contadorproductos").innerHTML=contador;
+    }
+    if (localStorage.getItem("poductostotal"!=null)) {
+        totalenproductos=parseInt(localStorage.getItem("poductostotal"));
+        document.getElementById("poductostotal").innerHTML=totalenproductos;
+    }
+    if (localStorage.getItem("costototal"!=null)) {
+        costototal=parseInt(localStorage.getItem("costototal"));
+        document.getElementById("costototal").innerHTML=costototal;
+    }
+    // console.log(localStorage.getItem("contadorproductos"));
+    console.log(localStorage.getItem("poductostotal"));
+    console.log(localStorage.getItem("costototal"));
+})
 
 // let element = document.getElementById("totalprecio");
 // element.innerHTML= "total del precio";
