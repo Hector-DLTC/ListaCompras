@@ -1,5 +1,6 @@
 let contador = 0;
 let costototal = 0;
+let totalenproductos=0;
 
 let element = document.getElementById("totalproducto");
  element.innerHTML="Total en productos:";
@@ -91,6 +92,8 @@ agregar.addEventListener("click", (event)=>{
     document.getElementById("contadorproductos").innerHTML=contador;
     let precio= (Math.floor((Math.random() * 50)*100))/100;
     let cantidad = parseFloat(txtNumber.value);
+    totalenproductos += (cantidad<1)?Math.ceil(cantidad):parseInt(cantidad);
+    document.getElementById("poductostotal").innerHTML = totalenproductos;
     costototal += (precio*cantidad);
     preciototal.innerHTML = `$ ${costototal.toFixed(2)}`
     let tmp = `<tr>
