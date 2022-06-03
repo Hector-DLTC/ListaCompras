@@ -138,7 +138,7 @@ window,addEventListener("load",function(){
     // console.log(localStorage.getItem("contadorproductos"));
     console.log(localStorage.getItem("poductostotal"));
     console.log(localStorage.getItem("costototal"));
-})
+});
 
 // let element = document.getElementById("totalprecio");
 // element.innerHTML= "total del precio";
